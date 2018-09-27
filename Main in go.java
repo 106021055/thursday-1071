@@ -1,3 +1,4 @@
+//登入主視窗的小鍵盤
 import javax.security.auth.login.LoginContext;
 import javax.swing.*;
 import java.awt.*;
