@@ -1,3 +1,4 @@
+//0927登入視窗 失敗畫面
 import javax.swing.*;
 
 public class fail extends JFrame{
