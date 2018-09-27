@@ -1,3 +1,4 @@
+//0927登入視窗的成功畫面
 import javax.swing.*;
 
 public class success extends JFrame{
