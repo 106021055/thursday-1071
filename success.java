@@ -11,6 +11,7 @@ public class success extends JFrame{
     private JMenuItem jmiclose = new JMenuItem("Close");
     private JMenuItem jmiexit = new JMenuItem("Exit");
     private JMenuItem jmiooxx = new JMenuItem("OOXX");
+    private JMenuItem jmiencrypt = new JMenuItem("encrypt");
 
     public static void main(String[] args) {
         new success().setVisible(true);
@@ -25,22 +26,31 @@ public class success extends JFrame{
         this.setJMenuBar(jmb);
         jmb.add(jmF); jmb.add(jmT); jmb.add(jmG); jmb.add(jmH);
         jmF.add(jmiopen); jmF.add(jmiclose); jmF.add(jmiexit);
-        jmG.add(jmiooxx);
+        jmG.add(jmiooxx); jmT.add(jmiencrypt);
 
-         jmiooxx.addActionListener(new AbstractAction() {
-             @Override
-             public void actionPerformed(ActionEvent e) {
-                 OOXX w = new OOXX(success.this);
-                 w.setVisible(true);
-                 success.this.setVisible(false);
-             }
-         });
+        jmiooxx.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                OOXX w = new OOXX(success.this);
+                w.setVisible(true);
+                success.this.setVisible(false);
+            }
+        });
 
-         jmiexit.addActionListener(new AbstractAction() {
-             @Override
-             public void actionPerformed(ActionEvent e) {
-                 System.exit(0);
-             }
-         });
+        jmiencrypt.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                encrypt op = new encrypt(success.this);
+                op.setVisible(true);
+                success.this.setVisible(false);
+            }
+        });
+
+        jmiexit.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
 }

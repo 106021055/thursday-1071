@@ -60,4 +60,3 @@ public class login extends JFrame {
         jpf.setText(lg);
     }
 }
-

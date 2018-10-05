@@ -1,5 +1,3 @@
-package homworklogin;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -7,13 +5,13 @@ import java.awt.event.WindowEvent;
 
 public class encrypt extends JFrame {
     public static void main(String[] args) {
-      //  new encrypt().setVisible(true);
+     //    new encrypt().setVisible(true);
     }
     Container cp;
-    private JTextArea jtaL = new JTextArea("");
-    private JTextArea jtaR = new JTextArea("");
-    private JScrollPane jspL = new JScrollPane();
-    private JScrollPane jspR = new JScrollPane();
+    private JTextArea jtaL = new JTextArea("",30,15);
+    private JTextArea jtaR = new JTextArea("",30,15);
+    private JScrollPane jspL = new JScrollPane(jtaL);
+    private JScrollPane jspR = new JScrollPane(jtaR);
     private JLabel jlbMethod = new JLabel("Method");
     private String methodStr[] = {"DES" , "AES" , "XOR" , "Caesar"};
     private JComboBox jcomb = new JComboBox<String>(methodStr);
@@ -37,7 +35,7 @@ public class encrypt extends JFrame {
     }
     public void init(){
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.setBounds(0,0,500,500);
+        this.setBounds(0,0,550,600);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -45,12 +43,12 @@ public class encrypt extends JFrame {
 
             }
         });
+
         cp = this.getContentPane();
         cp.add(jpl2, BorderLayout.WEST);
         cp.add(jpl1, BorderLayout.CENTER);
         cp.add(jpl3, BorderLayout.EAST);
-        jtaL.setSize(150,500);
-        jtaL.setSize(150,500);
+
 //        cp.setLayout(new BorderLayout(1,1));
 
         jpl1.add(jlbMethod);
@@ -62,11 +60,9 @@ public class encrypt extends JFrame {
         jpl1.add(jbtnrun);
         jpl1.add(jbtnclose);
 
-        jpl2.add(jtaL);
-        jtaL.add(jspL);
+        jpl2.add(jspL);
 
-        jpl3.add(jtaR);
-        jtaR.add(jspR);
+        jpl3.add(jspR);
 
         btnGroup.add(jrbtn1);
         btnGroup.add(jrbtn2);

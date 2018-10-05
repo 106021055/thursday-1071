@@ -30,13 +30,13 @@ public class OOXX extends JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setBounds(10, 10, 800, 600);
         this.addWindowListener(new WindowAdapter() {
-                                   @Override
-                                   public void windowClosing(WindowEvent e) {
-                                       frame.setVisible(true);
+            @Override
+            public void windowClosing(WindowEvent e) {
+                frame.setVisible(true);
 
-                                   }
-                               });
-                cp = this.getContentPane();
+            }
+        });
+        cp = this.getContentPane();
         cp.setLayout(new BorderLayout(3, 3)); //設定CENTER跟EAST的間格
         cp.add(jpnC, BorderLayout.CENTER);
         cp.add(jpnR, BorderLayout.EAST);
@@ -44,7 +44,7 @@ public class OOXX extends JFrame {
         for (int i = 0 ; i < 3 ; i++) {
             for (int j = 0 ; j < 3 ; j++) {
                 jbtns[i][j] = new JButton();
-               // jbtns[i][j].setBackground(new Color(225, 41, 56));
+                // jbtns[i][j].setBackground(new Color(225, 41, 56));
                 jbtns[i][j].setFont(new Font(null, Font.BOLD, 80));
                 jbtns[i][j].setEnabled(false);
                 jbtns[i][j].addActionListener(new AbstractAction() {
@@ -60,7 +60,7 @@ public class OOXX extends JFrame {
                             flag = !flag;
                         }
                         checkStat();
-                     //   tmpBtn.setBackground(new Color(115, 211, 255));
+                        //   tmpBtn.setBackground(new Color(115, 211, 255));
                     }
                 });
                 jpnC.add(jbtns[i][j]);
