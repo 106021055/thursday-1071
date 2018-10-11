@@ -1,11 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class encrypt extends JFrame {
     public static void main(String[] args) {
-     //    new encrypt().setVisible(true);
+        //    new encrypt().setVisible(true);
     }
     Container cp;
     private JTextArea jtaL = new JTextArea("",30,15);
@@ -13,7 +14,7 @@ public class encrypt extends JFrame {
     private JScrollPane jspL = new JScrollPane(jtaL);
     private JScrollPane jspR = new JScrollPane(jtaR);
     private JLabel jlbMethod = new JLabel("Method");
-    private String methodStr[] = {"DES" , "AES" , "XOR" , "Caesar"};
+    private String methodStr[] = {"DES" , "AES" , "Caesar" , "XOR"};
     private JComboBox jcomb = new JComboBox<String>(methodStr);
     private JLabel jlbPW = new JLabel("Password");
     private JTextField jtfPW = new JTextField();
@@ -67,5 +68,78 @@ public class encrypt extends JFrame {
         btnGroup.add(jrbtn1);
         btnGroup.add(jrbtn2);
 
+        jbtnrun.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (jrbtn1.isSelected()) {
+                    int dataLength = jtaL.getText().length();
+                    if (dataLength > 0) {
+                        switch (jcomb.getSelectedIndex()) {
+                            case 0:
+                                JOptionPane.showMessageDialog(encrypt.this, "sorry, "
+                                        + jcomb.getSelectedItem() + "not implement yet!");
+                                break;
+                            case 1:
+                                JOptionPane.showMessageDialog(encrypt.this, "sorry, "
+                                        + jcomb.getSelectedItem() + "not implement yet!");
+                                break;
+                            case 2:
+                                try {
+                                    int key = Integer.parseInt(jtfPW.getText());
+                                    char data[] = jtaL.getText().toCharArray();
+                                    for (int i = 0; i < dataLength; i++) {
+                                        data[i] = (char) (data[i] + key);
+                                    }
+                                    jtaR.setText(new String(data));
+                                } catch (NumberFormatException exp) {
+                                    JOptionPane.showMessageDialog(encrypt.this,
+                                            "key is not a number");
+                                } catch (Exception exp1) {
+                                    JOptionPane.showMessageDialog(encrypt.this, "Error:" +
+                                            exp1.toString());
+                                }
+                                break;
+                            case 3:
+                                JOptionPane.showMessageDialog(encrypt.this, "sorry, "
+                                        + jcomb.getSelectedItem() + "not implement yet!");
+                        }
+                    }
+                }else if (jrbtn2.isSelected()){
+                    int dataLength = jtaR.getText().length();
+                    if (dataLength > 0) {
+                        switch (jcomb.getSelectedIndex()) {
+                            case 0:
+                                JOptionPane.showMessageDialog(encrypt.this, "sorry, "
+                                        + jcomb.getSelectedItem() + "not implement yet!");
+                                break;
+                            case 1:
+                                JOptionPane.showMessageDialog(encrypt.this, "sorry, "
+                                        + jcomb.getSelectedItem() + "not implement yet!");
+                                break;
+                            case 2:
+                                try {
+                                    int key = Integer.parseInt(jtfPW.getText());
+                                    char data[] = jtaR.getText().toCharArray();
+                                    for (int i = 0; i < dataLength; i++) {
+                                         data[i] = (char) (data[i] - key);
+                                    }
+                                    jtaL.setText(new String(data));
+                                } catch (NumberFormatException exp) {
+                                    JOptionPane.showMessageDialog(encrypt.this,
+                                            "key is not a number");
+                                } catch (Exception exp1) {
+                                    JOptionPane.showMessageDialog(encrypt.this, "Error:" +
+                                            exp1.toString());
+                                }
+                                break;
+                            case 3:
+                                JOptionPane.showMessageDialog(encrypt.this, "sorry, "
+                                        + jcomb.getSelectedItem() + "not implement yet!");
+                        }
+                    }
+                }
+            }
+        });
+        }
     }
-}
+
