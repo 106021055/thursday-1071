@@ -1,20 +1,27 @@
+package homworklogin;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class encrypt extends JFrame {
     public static void main(String[] args) {
         //    new encrypt().setVisible(true);
     }
+
     Container cp;
-    private JTextArea jtaL = new JTextArea("",30,15);
-    private JTextArea jtaR = new JTextArea("",30,15);
+    private JTextArea jtaL = new JTextArea("", 30, 15);
+    private JTextArea jtaR = new JTextArea("", 30, 15);
     private JScrollPane jspL = new JScrollPane(jtaL);
     private JScrollPane jspR = new JScrollPane(jtaR);
     private JLabel jlbMethod = new JLabel("Method");
-    private String methodStr[] = {"DES" , "AES" , "Caesar" , "XOR"};
+    private String methodStr[] = {"DES", "AES", "XOR", "Caesar"};
     private JComboBox jcomb = new JComboBox<String>(methodStr);
     private JLabel jlbPW = new JLabel("Password");
     private JTextField jtfPW = new JTextField();
@@ -24,19 +31,27 @@ public class encrypt extends JFrame {
     private JButton jbtnclose = new JButton("close");
     private ButtonGroup btnGroup = new ButtonGroup();
 
-    private JPanel jpl1 = new JPanel(new GridLayout(9,1,1,1));
-    private JPanel jpl2 = new JPanel(new GridLayout(1,1,1,1));
-    private JPanel jpl3 = new JPanel(new GridLayout(1,1,1,1));
+    private JMenuBar jmb = new JMenuBar();
+    private JMenu jmf = new JMenu("File");
+    private JMenu jma = new JMenu("About");
+    private JMenuItem jmiopen = new JMenuItem("Open");
+    private JMenuItem jmiclose = new JMenuItem("Close");
+    private JFileChooser jfc = new JFileChooser();
+
+    private JPanel jpl1 = new JPanel(new GridLayout(9, 1, 1, 1));
+    private JPanel jpl2 = new JPanel(new GridLayout(1, 1, 1, 1));
+    private JPanel jpl3 = new JPanel(new GridLayout(1, 1, 1, 1));
 
     private success mainframe;
 
-    public encrypt(success mainframe){
+    public encrypt(success mainframe) {
         this.mainframe = mainframe;
         init();
     }
-    public void init(){
+
+    public void init() {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.setBounds(0,0,550,600);
+        this.setBounds(0, 0, 550, 600);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -49,9 +64,7 @@ public class encrypt extends JFrame {
         cp.add(jpl2, BorderLayout.WEST);
         cp.add(jpl1, BorderLayout.CENTER);
         cp.add(jpl3, BorderLayout.EAST);
-
 //        cp.setLayout(new BorderLayout(1,1));
-
         jpl1.add(jlbMethod);
         jpl1.add(jcomb);
         jpl1.add(jlbPW);
@@ -62,11 +75,14 @@ public class encrypt extends JFrame {
         jpl1.add(jbtnclose);
 
         jpl2.add(jspL);
-
         jpl3.add(jspR);
 
         btnGroup.add(jrbtn1);
         btnGroup.add(jrbtn2);
+
+        this.setJMenuBar(jmb);
+        jmb.add(jmf); jmb.add(jma);
+        jmf.add(jmiopen); jmf.add(jmiclose);
 
         jbtnrun.addActionListener(new AbstractAction() {
             @Override
@@ -104,7 +120,7 @@ public class encrypt extends JFrame {
                                         + jcomb.getSelectedItem() + "not implement yet!");
                         }
                     }
-                }else if (jrbtn2.isSelected()){
+                } else if (jrbtn2.isSelected()) {
                     int dataLength = jtaR.getText().length();
                     if (dataLength > 0) {
                         switch (jcomb.getSelectedIndex()) {
@@ -121,7 +137,7 @@ public class encrypt extends JFrame {
                                     int key = Integer.parseInt(jtfPW.getText());
                                     char data[] = jtaR.getText().toCharArray();
                                     for (int i = 0; i < dataLength; i++) {
-                                         data[i] = (char) (data[i] - key);
+                                        data[i] = (char) (data[i] - key);
                                     }
                                     jtaL.setText(new String(data));
                                 } catch (NumberFormatException exp) {
@@ -140,6 +156,36 @@ public class encrypt extends JFrame {
                 }
             }
         });
-        }
-    }
 
+        jmiopen.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    if (jfc.showOpenDialog(encrypt.this) == JFileChooser.APPROVE_OPTION){
+                        jtaL.setText("");
+                        String str = "";
+                        File selectFile = jfc.getSelectedFile();
+                        FileReader fr = new FileReader(selectFile);
+                        BufferedReader bfr = new BufferedReader(fr);
+                        while ((str = bfr.readLine()) != null){
+                            jtaL.append(str);
+                        }
+                        fr.close();
+                    }
+                }catch (IOException ioe){
+                    JOptionPane.showMessageDialog(encrypt.this, "Open file error: "
+                    +ioe.toString());
+                }
+            }
+        });
+
+        jmiclose.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                success qw = new success();
+                qw.setVisible(true);
+                encrypt.this.setVisible(false);
+            }
+        });
+    }
+}
