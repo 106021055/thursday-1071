@@ -21,7 +21,7 @@ public class encrypt extends JFrame {
     private JScrollPane jspL = new JScrollPane(jtaL);
     private JScrollPane jspR = new JScrollPane(jtaR);
     private JLabel jlbMethod = new JLabel("Method");
-    private String methodStr[] = {"DES", "AES", "XOR", "Caesar"};
+    private String methodStr[] = {"DES", "AES", "Caesar", "XOR"};
     private JComboBox jcomb = new JComboBox<String>(methodStr);
     private JLabel jlbPW = new JLabel("Password");
     private JTextField jtfPW = new JTextField();
