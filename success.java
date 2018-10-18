@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class success extends JFrame{
@@ -12,6 +13,9 @@ public class success extends JFrame{
     private JMenuItem jmiexit = new JMenuItem("Exit");
     private JMenuItem jmiooxx = new JMenuItem("OOXX");
     private JMenuItem jmiencrypt = new JMenuItem("encrypt");
+    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private int screew = screenSize.width,screeh = screenSize.height;
+    private int frmw = 700,frmh = 700;
 
     public static void main(String[] args) {
         new success().setVisible(true);
@@ -21,7 +25,7 @@ public class success extends JFrame{
     }
     public void q(){
 //        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setBounds(200,200,800,800);
+        this.setBounds(screew/2 - frmw/2 , screeh/2 - frmh/2 , frmw,frmh);
         this.setLayout(null);
         this.setJMenuBar(jmb);
         jmb.add(jmF); jmb.add(jmT); jmb.add(jmG); jmb.add(jmH);

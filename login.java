@@ -16,6 +16,9 @@ public class login extends JFrame {
     private JButton jbtn3 = new JButton("Exit");
     private JPanel jpn = new JPanel(new GridLayout(2,2,3,3));
     private JPanel jpn1 = new JPanel(new GridLayout(1,3,3,1));
+    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private int screew = screenSize.width,screeh = screenSize.height;
+    private int frmw = 300,frmh = 120;
 
     public login(){
         ha();
@@ -26,6 +29,7 @@ public class login extends JFrame {
         cp = this.getContentPane();
         cp.add(jpn, BorderLayout.CENTER);
         cp.add(jpn1, BorderLayout.SOUTH);
+        this.setBounds(screew/2 - frmw/2 , screeh/2 - frmh/2 , frmw,frmh);
         jpn.add(jlb1); jpn.add(jtf); jpn.add(jlb2); jpn.add(jpf);
         jpn1.add(jbtn1); jpn1.add(jbtn2); jpn1.add(jbtn3);
 
