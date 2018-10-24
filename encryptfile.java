@@ -2,19 +2,25 @@ package homworklogin;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class encryptfile extends JFrame {
     public static void main(String[] args) {
-       // new encryptfile().setVisible(true);
+        // new encryptfile().setVisible(true);
     }
+
     private Container cp;
-    private JPanel jplW = new JPanel(new GridLayout(2,1,3,3));
-    private JPanel jplE = new JPanel(new GridLayout(2,1,3,3));
-    private JPanel jplC = new JPanel(new GridLayout(2,1,3,3));
-    private JPanel jplN = new JPanel(new GridLayout(1,6,3,3));
-    private JPanel jplS = new JPanel(new GridLayout(1,1,0,0));
+    private JPanel jplW = new JPanel(new GridLayout(2, 1, 3, 3));
+    private JPanel jplE = new JPanel(new GridLayout(2, 1, 3, 3));
+    private JPanel jplC = new JPanel(new GridLayout(2, 1, 3, 3));
+    private JPanel jplN = new JPanel(new GridLayout(1, 6, 3, 3));
+    private JPanel jplS = new JPanel(new GridLayout(1, 1, 0, 0));
     private JLabel jlb1 = new JLabel("原始檔");
     private JLabel jlb2 = new JLabel("加密檔");
     private JLabel jlb3 = new JLabel("加密法");
@@ -36,12 +42,13 @@ public class encryptfile extends JFrame {
     private int val = 10;
     private success good;
 
-    public encryptfile(success good){
+    public encryptfile(success good) {
         this.good = good;
         iii();
     }
-    public void iii(){
-        this.setBounds(120,120,frmw,frmh);
+
+    public void iii() {
+        this.setBounds(120, 120, frmw, frmh);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -73,5 +80,29 @@ public class encryptfile extends JFrame {
         jplE.add(jbtnload);
 
         jplS.add(jpb);
+
+        jbtnrun.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            BufferedInputStream reader = new BufferedInputStream(new FileInputStream(new File("C:\\Users\\USER\\Desktop\\try.txt")));
+                            int data[] = new int[reader.available()];
+                            for (int i = 1; i <= data.length; i++) {
+                                System.out.println(reader.read());
+                                jpb.setValue((int) (((float) i / data.length) * 100));
+                            }
+                        } catch (IOException ioe1) {
+                            ioe1.printStackTrace();
+                        }
+                    }
+                }).start();
+            }
+        });
+
+
+
     }
 }
