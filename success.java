@@ -13,6 +13,7 @@ public class success extends JFrame{
     private JMenuItem jmiexit = new JMenuItem("Exit");
     private JMenuItem jmiooxx = new JMenuItem("OOXX");
     private JMenuItem jmiencrypt = new JMenuItem("encrypt");
+    private JMenuItem jmiencryptfile = new JMenuItem("encryptfile");
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private int screew = screenSize.width,screeh = screenSize.height;
     private int frmw = 700,frmh = 700;
@@ -30,21 +31,30 @@ public class success extends JFrame{
         this.setJMenuBar(jmb);
         jmb.add(jmF); jmb.add(jmT); jmb.add(jmG); jmb.add(jmH);
         jmF.add(jmiopen); jmF.add(jmiclose); jmF.add(jmiexit);
-        jmG.add(jmiooxx); jmT.add(jmiencrypt);
+        jmG.add(jmiooxx); jmT.add(jmiencrypt); jmT.add(jmiencryptfile);
 
-        jmiooxx.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                OOXX w = new OOXX(success.this);
-                w.setVisible(true);
-                success.this.setVisible(false);
-            }
-        });
+//        jmiooxx.addActionListener(new AbstractAction() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                OOXX w = new OOXX(success.this);
+//                w.setVisible(true);
+//                success.this.setVisible(false);
+//            }
+//        });
 
         jmiencrypt.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 encrypt op = new encrypt(success.this);
+                op.setVisible(true);
+                success.this.setVisible(false);
+            }
+        });
+
+        jmiencryptfile.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                encryptfile op = new encryptfile(success.this);
                 op.setVisible(true);
                 success.this.setVisible(false);
             }

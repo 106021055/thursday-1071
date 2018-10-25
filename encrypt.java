@@ -226,9 +226,9 @@ public class encrypt extends JFrame {
                     }else {
                         JOptionPane.showMessageDialog(encrypt.this, "No Data Can Write Out!!");
                     }
-                    }catch(IOException ioe2){
-                        JOptionPane.showMessageDialog(encrypt.this, "open file error: " + ioe2.toString());
-                    } catch (Exception ioe3) {
+                }catch(IOException ioe2){
+                    JOptionPane.showMessageDialog(encrypt.this, "open file error: " + ioe2.toString());
+                } catch (Exception ioe3) {
                     JOptionPane.showMessageDialog(encrypt.this, "Error: " + ioe3.toString());
                 }
             }

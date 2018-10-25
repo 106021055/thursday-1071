@@ -33,14 +33,14 @@ public class login extends JFrame {
         jpn.add(jlb1); jpn.add(jtf); jpn.add(jlb2); jpn.add(jpf);
         jpn1.add(jbtn1); jpn1.add(jbtn2); jpn1.add(jbtn3);
 
-        jbtn1.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                keyboard ha = new keyboard(login.this);
-                ha.setVisible(true);
-
-            }
-        });
+//        jbtn1.addActionListener(new AbstractAction() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                keyboard ha = new keyboard(login.this);
+//                ha.setVisible(true);
+//
+//            }
+//        });
         jbtn2.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
