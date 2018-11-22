@@ -16,6 +16,7 @@ public class success extends JFrame{
     private JMenuItem jmiencryptfile = new JMenuItem("encryptfile");
     private JMenuItem jmienclock = new JMenuItem("clock");
     private JMenuItem jmitaco = new JMenuItem("taco");
+    private JMenuItem jmifishbox = new JMenuItem("fishbox");
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private int screew = screenSize.width,screeh = screenSize.height;
     private int frmw = 700,frmh = 700;
@@ -34,7 +35,7 @@ public class success extends JFrame{
         jmb.add(jmF); jmb.add(jmT); jmb.add(jmG); jmb.add(jmH);
         jmF.add(jmiopen); jmF.add(jmiclose); jmF.add(jmiexit);
         jmG.add(jmiooxx); jmT.add(jmiencrypt); jmT.add(jmiencryptfile); jmT.add(jmienclock);
-        jmG.add(jmitaco);
+        jmG.add(jmitaco); jmG.add(jmifishbox);
 
 //        jmiooxx.addActionListener(new AbstractAction() {
 //            @Override
@@ -45,38 +46,47 @@ public class success extends JFrame{
 //            }
 //        });
 
-        jmiencrypt.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                encrypt op = new encrypt(success.this);
-                op.setVisible(true);
-                success.this.setVisible(false);
-            }
-        });
-
-        jmiencryptfile.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                encryptfile op = new encryptfile(success.this);
-                op.setVisible(true);
-                success.this.setVisible(false);
-            }
-        });
-
-        jmienclock.addActionListener(new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                clock xd = new clock(success.this);
-                xd.setVisible(true);
-                success.this.setVisible(false);
-            }
-        });
-
+//        jmiencrypt.addActionListener(new AbstractAction() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                encrypt op = new encrypt(success.this);
+//                op.setVisible(true);
+//                success.this.setVisible(false);
+//            }
+//        });
+//
+//        jmiencryptfile.addActionListener(new AbstractAction() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                encryptfile op = new encryptfile(success.this);
+//                op.setVisible(true);
+//                success.this.setVisible(false);
+//            }
+//        });
+//
+//        jmienclock.addActionListener(new AbstractAction() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                clock xd = new clock(success.this);
+//                xd.setVisible(true);
+//                success.this.setVisible(false);
+//            }
+//        });
+//
         jmitaco.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                taco xd = new taco(success.this);
+                tacoauto xd = new tacoauto(success.this);
                 xd.setVisible(true);
+                success.this.setVisible(false);
+            }
+        });
+
+        jmifishbox.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fishbox ha = new fishbox(success.this);
+                ha.setVisible(true);
                 success.this.setVisible(false);
             }
         });
